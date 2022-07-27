@@ -1,0 +1,20 @@
+[Unit]
+Description=Lunes Node Blockchain
+After=network.target
+[Service]
+WorkingDirectory=/opt/lunesnode/
+ExecStart=/usr/bin/java -jar /opt/lunesnode/lunesnode-latest.jar /etc/lunesnode/lunesnode.conf
+LimitNOFILE=4096
+Type=simple
+User=lunesuser
+Group=lunesuser
+Restart=always
+RestartSec=5000ms
+StandardOutput=syslog
+StandardError=journal
+SyslogIdentifier=lunesnode
+RestartPreventExitStatus=38
+SuccessExitStatus=143
+PermissionsStartOnly=true
+TimeoutStopSec=300
+[Install]
